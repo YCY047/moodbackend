@@ -96,9 +96,8 @@ async def get_image(filename: str):
     return FileResponse(os.path.join("uploads", filename))
 
 @app.get("/", response_class=HTMLResponse)
-async def index():
-    with open("static/index.html", "r", encoding="utf-8") as f:
-        return f.read()
+def root():
+    return {"message": "API is running"}
 
 @app.get("/mood_list", response_class=HTMLResponse)
 async def mood_list():
